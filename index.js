@@ -21,7 +21,11 @@ async function run() {
         const work = req.body;
         const result = await workCollection.insertOne(work);
         res.send(result);
-      })
+      });
+      app.get('/work', async(req, res) =>{
+        const works = await workCollection.find().toArray();
+        res.send(works);
+      });
     }
     finally{
 
